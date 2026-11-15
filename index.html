@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes Events — L-Maghrib w l-3alam</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>🗓️ Mes Events</h1>
+      <p class="subtitle">Kol les events li 3ndna inshallah — f l-Maghrib 🇲🇦 wla f l3alam kaml 🌍</p>
+      <div class="stats" id="stats"></div>
+      <button class="btn btn-primary btn-big" id="btnAdd">＋ Zid event jdid</button>
+    </div>
+  </header>
+
+  <section class="controls">
+    <div class="tabs" id="regionTabs">
+      <button class="tab active" data-region="all">Kolchi</button>
+      <button class="tab" data-region="ma">🇲🇦 L-Maghrib</button>
+      <button class="tab" data-region="world">🌍 L-3alam</button>
+    </div>
+    <div class="controls-row">
+      <input type="search" id="search" placeholder="🔍 B7et 3la event (smia, blad, madina)..." />
+      <select id="categoryFilter">
+        <option value="all">Kol les catégories</option>
+        <option value="musique">🎵 Musique</option>
+        <option value="sport">⚽ Sport</option>
+        <option value="culture">🎭 Culture</option>
+        <option value="tech">💻 Tech</option>
+        <option value="voyage">✈️ Voyage</option>
+        <option value="autre">📌 Autre</option>
+      </select>
+      <select id="sort">
+        <option value="asc">📅 A9rab l-awal</option>
+        <option value="desc">📅 L-akhir l-awal</option>
+      </select>
+    </div>
+    <div class="countdown" id="countdown"></div>
+  </section>
+
+  <main>
+    <div class="grid" id="eventsGrid"></div>
+    <p class="empty" id="emptyMsg" hidden>A Kayn walo hna... zid event jdid mn l-fouq! 👆</p>
+  </main>
+
+  <!-- Modal d'ajout / modification -->
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal">
+      <h2 id="modalTitle">＋ Zid event jdid</h2>
+      <form id="eventForm">
+        <input type="hidden" id="eventId" />
+        <label>Smia dyal l'event *
+          <input type="text" id="title" required placeholder="Matal: Festival Gnaoua" />
+        </label>
+        <div class="form-row">
+          <label>Date *
+            <input type="date" id="date" required />
+          </label>
+          <label>L-wa9t
+            <input type="time" id="time" />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>L-blad *
+            <select id="country" required>
+              <option value="MA">🇲🇦 L-Maghrib</option>
+              <option value="FR">🇫🇷 France</option>
+              <option value="ES">🇪🇸 Espagne</option>
+              <option value="PT">🇵🇹 Portugal</option>
+              <option value="US">🇺🇸 États-Unis</option>
+              <option value="GB">🇬🇧 UK</option>
+              <option value="DE">🇩🇪 Allemagne</option>
+              <option value="AE">🇦🇪 Émirats</option>
+              <option value="SA">🇸🇦 Arabie Saoudite</option>
+              <option value="QA">🇶🇦 Qatar</option>
+              <option value="EG">🇪🇬 Miṣr</option>
+              <option value="TN">🇹🇳 Tunisie</option>
+              <option value="DZ">🇩🇿 Dzayer</option>
+              <option value="OTHER">🌍 Blad akhor</option>
+            </select>
+          </label>
+          <label>Madina / blasa
+            <input type="text" id="city" placeholder="Matal: Essaouira" />
+          </label>
+        </div>
+        <label>Kategoria
+          <select id="category">
+            <option value="musique">🎵 Musique</option>
+            <option value="sport">⚽ Sport</option>
+            <option value="culture">🎭 Culture</option>
+            <option value="tech">💻 Tech</option>
+            <option value="voyage">✈️ Voyage</option>
+            <option value="autre">📌 Autre</option>
+          </select>
+        </label>
+        <label>Wasa2 (description)
+          <textarea id="description" rows="3" placeholder="Chno fih had l'event?"></textarea>
+        </label>
+        <label>Lien (optionnel)
+          <input type="url" id="link" placeholder="https://..." />
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="btnCancel">L3iwad (Annuler)</button>
+          <button type="submit" class="btn btn-primary">💾 Sajjel l'event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>Made with ❤️ — les events kayt7fezou f l-browser dyalak (localStorage)</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
